@@ -14,7 +14,7 @@ async function showUsers(term) {
     });
 }
 
-// Handle search icon click
+// Handle search icon click 
 document.getElementById("icon").addEventListener('click', () => {
     const term = document.getElementById("search").value
     showUsers(term);
