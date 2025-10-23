@@ -1,0 +1,9 @@
+This project is made to work like a real website with front and backend scripts
+
+Back End
+	Make sure to start up the backend 1st by running backEnd.py 
+
+Front End
+	Next the front end can be opened using frontEnd.py it will lag as it is made for main.html to be opened directly with the VS 'live server' extension
+
+	note: if using 'live server' do NOT open front end and back end as one folder in VS!!!

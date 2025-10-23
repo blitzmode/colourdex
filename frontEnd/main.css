@@ -1,0 +1,390 @@
+/* Global page and base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
+}
+
+/* Layout for centering the app container */
+body {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main white app container */
+#main {
+  position: relative;
+  max-width: 1200px;
+  height: calc(100vh - 40px);
+  width: 100%;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top title bar / navigation */
+#main #title {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #93fba4 0%, #57f5ed 100%);
+  aspect-ratio: 23 / 1;
+  width: 100%;
+  padding: 0 3%;
+  box-sizing: border-box;
+}
+
+/* Title bar icon groups */
+#main #title .left-icons,
+#main #title .right-icons {
+  display: flex;
+  align-items: center;
+  gap: 30%;
+  height: 100%;
+}
+
+#main #title .right-icons {
+  justify-content: flex-end;
+}
+
+#main #title .icon {
+  height: 70%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+#main #title .center-text {
+  font-size: 3.5vh;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  flex-grow: 1;
+  pointer-events: none;
+}
+
+.small-emoji {
+    font-size: 0.9em;
+}
+
+/* Scrollable page area*/
+#main #page {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0px;
+}
+
+/* colour icon */
+#dis {
+  display: inline-block;
+  margin: 10px;
+  width: 50px;
+  height: 65px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  background: #eaeaea;
+}
+
+#dis #name {
+  font-size: 10px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#dis #colour {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  margin-bottom: 2px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+/* Overlay holder for popups */
+#holder {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  overflow: visible;
+  z-index: 9999;
+}
+
+/* login popup */
+#login{
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+}
+
+#login #logincore{
+  height: 50%;
+  aspect-ratio: 10 / 7;
+  background: white;
+  border: #000 2px solid;
+  border-radius: 8px;
+
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#login #logincore *{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+  margin-top: 5%;
+  height: 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+#login #logincore #title{
+  font-size: calc(50vh * 0.10 * 0.80);
+}
+
+#login #logincore #name{
+  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  border: 0px;
+  border-bottom: gray 2px solid;
+  text-align: left;
+}
+
+#login #logincore #password{
+  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  border: 0px;
+  border-bottom: gray 2px solid;
+  text-align: left;
+}
+
+#login #logincore #cpassword{
+  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  border: 0px;
+  border-bottom: gray 2px solid;
+  text-align: left;
+}
+
+#login #logincore #button{
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 40%;
+  border: gray 2px solid;
+  font-size: calc(50vh * 0.10 * 0.80 * .7);
+  cursor: pointer;
+}
+
+#login #logincore #signup{
+  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  cursor: pointer;
+}
+
+/* Reusable user ribbon */
+.profileLine {
+  position: relative;
+  width: calc(100% - 10px);;
+  aspect-ratio: 16 / 1;
+  border: solid 1px black;;
+  border-radius: 10px;
+  background: #ffffff;
+  margin: 5px;
+}
+.profileLine .pic {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+  transform: translateY(-50%);
+  height: 70%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url("Icons/bob.jpg");
+  background-size: cover;
+  border: solid 1px black;
+}
+.profileLine .name {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+  height: 70%;
+  width: 90%;
+  font-size: 4vh;
+  text-align: left;
+}
+.profileLine .button {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 20%;
+  font-size: 3vh;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #93fba4;
+  border: #3f804a solid 2px;
+}
+
+.profileLine .mes {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 20%;
+  font-size: 3vh;
+  text-align: right;
+}
+
+#container{
+  margin-top: 5px;
+  padding: 10px;
+  text-align: center;
+  border-top: #eaeaea solid;
+}
+
+.clickable {
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+.clickable:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#rates {
+  width: 70vh;
+  aspect-ratio: 10 / 10;
+  background: white;
+  border-radius: 15px;
+  border: #333 2px solid;
+  transform: translate(-50%, -50%);
+}
+
+/* ratings for colour popup element */
+#rates #pic{
+  position: absolute;
+  height: 5vh;
+  width: 5vh;
+  left: 3vh;
+  top: 3vh;
+  background: white;
+  border-radius: 50%;
+  border: #333 2px solid;
+}
+
+#rates #name{
+  position: absolute;
+  height: 5vh;
+  width: 55vh;
+  left: 10vh;
+  top: 3vh;
+  font-size: 3.5vh;
+}
+
+#rates #rate{
+  position: absolute;
+  height: 45vh;
+  width: 60vh;
+  left: 3vh;
+  bottom: 10vh;
+  background: white;
+  border-radius: 5px;
+  border: #333 2px solid;
+  padding: 2vh;
+}
+
+#rates #rate #desc{
+  position: absolute;
+  height: 25vh;
+  width: 50vh;
+  left: 5vh;
+  bottom: 5vh;
+  background: white;
+  border-radius: 3px;
+  border: #686868 1px solid;
+  padding: 2vh;
+}
+
+#rates #rate .star{
+  width: 3vh;
+  height: 3vh;
+  top: 9vh;
+  position: absolute;
+  background-size: cover;
+}
+
+#rates #rate #next{
+  width: 3vh;
+  height: 3vh;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  right: -0.5vh;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Icons/next.png);
+}
+
+#rates #rate #last{
+  width: 3vh;
+  height: 3vh;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 0.5vh;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Icons/next.png);
+  transform: rotate(180deg);
+}
+
+#rates #close{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transform: translate(50%, -50%);
+  border-radius: 50%;
+  top: 0px;
+  right: 0px;
+  background: rgb(220, 117, 117);
+  border: rgb(136, 52, 52) 2px solid;
+  background-image: url(Icons/close.png);
+  background-size:60% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#rates #background{
+  position: absolute;
+  height: 5vh;
+  width: 60vh;
+  left: 5vh;
+  bottom: 3vh;
+  background: rgb(219, 219, 219);
+  border-radius: 5px;
+  border: #333333 2px solid;
+  text-align: center;
+}

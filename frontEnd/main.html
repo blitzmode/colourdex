@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>ColorDex</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <!-- Login -->
+    <div id="login">
+      <div id="logincore"> </div>
+    </div>
+    <div id="main">
+
+      <!-- Colourdex title bar with navigation icons -->
+      <div id="title">
+        <div class="left-icons">
+          <div class="icon" onclick="loadPage('home', null)" style="background-image: url(Icons/home.png)"></div>
+          <div class="icon" onclick="loadPage('cam', null)" style="background-image: url(Icons/cam.png)"></div>
+        </div>
+
+        <div class="center-text">
+          <span class="small-emoji">🎨</span> Colordex <span class="small-emoji">🎨</span>
+        </div>
+
+        <div class="right-icons">
+          <div class="icon" onclick="loadPage('chat', null)" style="background-image: url(Icons/chat.png)"></div>
+          <div class="icon" onclick="loadPage('people', null)" style="background-image: url(Icons/people.png)"></div>
+        </div>
+      </div>
+
+      <!-- page content will be injected here -->
+      <div id="page"></div>
+    </div>
+    <!-- Overlay holder for modals/popups -->
+    <div id="holder"></div>
+    <!-- Main JS file -->
+    <script src="main.js"></script>
+  </body>
+</html>
