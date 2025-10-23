@@ -1,9 +1,11 @@
+/* Container for list items */
 #lists {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
+/* button for lists e.g. colours, friends */
 #lists .list{
     width: 10%;
     aspect-ratio: 4 / 1;
@@ -15,6 +17,7 @@
     border-radius: 5px;
 }
 
+/* Badge - main container */
 .badge {
   position: relative;
   width: calc(100% - 10px);;
@@ -24,6 +27,7 @@
   background: #aaaaaa;
   margin: 5px;
 }
+/* Profile picture in badge */
 .badge .pic {
   position: absolute;
   top: 50%;
@@ -36,6 +40,7 @@
   background-size: cover;
   border: solid 1px black;
 }
+/* Name display in badge */
 .badge .name {
   position: absolute;
   top: 50%;
@@ -46,6 +51,7 @@
   font-size: 4vh;
   text-align: left;
 }
+/* Action button in badge */
 .badge .button {
   position: absolute;
   top: 50%;
@@ -59,6 +65,7 @@
   background-color: #93fba4;
   border: #3f804a solid 2px;
 }
+/* Message counter in badge */
 .badge .mes {
   position: absolute;
   top: 50%;

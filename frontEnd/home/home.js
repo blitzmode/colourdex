@@ -1,8 +1,10 @@
 const container = document.getElementById("container");
 
+// Set user ID from global UID or page data if available
 var id = uid
 if (window.pageData){ id = window.pageData }
 
+// Display user's color collection
 async function showColours() {
     container.innerHTML = "No Colours Yet"
     var colours = await getData("user/colours", {id: id});
@@ -12,6 +14,7 @@ async function showColours() {
     });
 }
 
+// Display user's friend list
 async function showFriends() {
     container.innerHTML = "No Friends Yet"
     var friends = await getData("user/friends", {id: id});
@@ -20,6 +23,7 @@ async function showFriends() {
     });
 }
 
+// Display user's badges
 async function showBadges() {
     container.innerHTML = ""
     var badges = await getData("user/badges", {id: id});
@@ -33,7 +37,9 @@ async function showBadges() {
         const newLine = container.lastElementChild;
         newLine.querySelector('.name').textContent = badge["name"]
 
+        // Handle completed badges
         if (badge["done"]){
+            // Add equip button for user's own profile
             if (id == uid){
                 newLine.insertAdjacentHTML("beforeend", `
                     <div class="button clickable textfill">Equip</div>
@@ -49,15 +55,18 @@ async function showBadges() {
                 });
             }
             
+            // Set badge image and background
             newLine.querySelector(".pic").style.backgroundImage = "url(" + badge["path"] + ")"
             newLine.style.backgroundColor = `rgb(${255}, ${255}, ${255})`;
         }
     });
 }
 
+// Initialize page with colors display
 showColours();
 addProfileLine(id, document.getElementById("top"));
 
+// Event listeners for list buttons
 document.getElementById("colours").addEventListener('click', () => {
     showColours();
 });
