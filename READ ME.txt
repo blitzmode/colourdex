@@ -4,6 +4,14 @@ Back End
 	Make sure to start up the backend 1st by running backEnd.py 
 
 Front End
-	Next the front end can be opened using frontEnd.py it will lag as it is made for main.html to be opened directly with the VS 'live server' extension
+	Next the front end can be opened using directly with the VS 'live server' extension
+	 (to use right click main.html them click "open with live surver")
 
-	note: if using 'live server' do NOT open front end and back end as one folder in VS!!!
+note: when using 'live server' do NOT open front end and back end as one folder in VS!!!
+
+bad							good
+
+EXPLORER					EXPLORER
+|-- colorudex				|-- frount end
+	|-- frount end			|-- back end
+	|-- back end

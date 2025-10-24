@@ -1,14 +1,47 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
+const indicator = document.getElementById('center-indicator');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-// Request access to the user's camera and stream it into the <video> element
+// Start the camera feed
 navigator.mediaDevices.getUserMedia({ video: true })
   .then((stream) => {
     video.srcObject = stream;
+    video.addEventListener('play', () => {
+      updateIndicator();
+    });
   })
   .catch((err) => {
     alert("Error accessing camera: " + err);
   });
+
+// Function to constantly update the color indicator
+function updateIndicator() {
+  if (video.readyState >= 2) {
+    const vw = video.videoWidth;
+    const vh = video.videoHeight;
+
+    canvas.width = vw;
+    canvas.height = vh;
+    ctx.drawImage(video, 0, 0, vw, vh);
+
+    // middle pixel
+    const cx = Math.floor(vw / 2);
+    const cy = Math.floor(vh / 2);
+    const [r, g, b] = ctx.getImageData(cx, cy, 1, 1).data;
+
+    // update circle color
+    indicator.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+    const rect = video.getBoundingClientRect();
+
+    indicator.style.left = `${rect.width / 2}px`;
+    indicator.style.top = `${rect.height / 2}px`;
+  }
+
+  requestAnimationFrame(updateIndicator);
+}
+
 
 // Show a rating popup for a captured colour and return the result
 async function showRating(r, g, b, name) {

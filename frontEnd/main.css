@@ -141,11 +141,11 @@ body {
 }
 
 #login #logincore{
-  width: 50vw;
+  width: 50vh;
   background: white;
   border: #000 2px solid;
   border-radius: 8px;
-  padding: 1vw;
+  padding: 1vh;
   
   display: inline-flex;
   flex-direction: column;
@@ -158,8 +158,8 @@ body {
 
   text-align: center;
   width: 80%;
-  margin: 2vw;
-  height: 4vw;
+  margin: 2vh;
+  height: 4vh;
 
   display: flex;
   justify-content: center;
@@ -167,25 +167,25 @@ body {
 } 
 
 #login #logincore #title{
-  font-size: calc(50vh * 0.10 * 0.80);
+  font-size: 2vh;
 }
 
 #login #logincore #name{
-  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  font-size: 1.5vh;
   border: 0px;
   border-bottom: gray 2px solid;
   text-align: left;
 }
 
 #login #logincore #password{
-  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  font-size: 1.5vh;
   border: 0px;
   border-bottom: gray 2px solid;
   text-align: left;
 }
 
 #login #logincore #cpassword{
-  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  font-size: 1.5vh;
   border: 0px;
   border-bottom: gray 2px solid;
   text-align: left;
@@ -196,12 +196,13 @@ body {
   border-radius: 5px;
   width: 40%;
   border: gray 2px solid;
-  font-size: calc(50vh * 0.10 * 0.80 * .7);
+  font-size: 1.5vh;
   cursor: pointer;
 }
 
 #login #logincore #signup{
-  font-size: calc(50vh * 0.10 * 0.80 * .5);
+  font-size: 1.3vh;
+  color: rgb(61, 61, 255);
   cursor: pointer;
 }
 

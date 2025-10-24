@@ -120,6 +120,20 @@ async function addProfileLine(id, container){
 
 const _holder = document.getElementById("holder")
 
+const updateHolder = () => {
+  const child = _holder.children[0];
+  if (_holder.children.length === 1) {
+    child.style.pointerEvents = 'auto';
+    _holder.style.pointerEvents = 'none';
+  } else {
+    Array.from(_holder.children).forEach(c => c.style.pointerEvents = 'auto');
+    _holder.style.pointerEvents = 'auto';
+  }
+};
+
+updateHolder();
+new MutationObserver(updateHolder).observe(_holder, { childList: true });
+
 // Attach click handler to show ratings for a colour.
 function addShowRatesEvent(button, name, r, g, b){
     button.addEventListener('click', (e) => {
@@ -307,14 +321,14 @@ function SwitchToSignUp() {
         <input id="password" placeholder="Password" type="password" />
         <input id="cpassword" placeholder="Confirm Password" type="password" />
         <button id="button" type="button">Sign Up</button>
-        <span id="loginBack">Back to Log In</span>
+        <span id="signup">Back to Log In</span>
     `;
 
     const uname = Lcore.querySelector("#name");
     const password = Lcore.querySelector("#password");
     const cpassword = Lcore.querySelector("#cpassword");
     const button = Lcore.querySelector("#button");
-    const loginBack = Lcore.querySelector("#loginBack");
+    const loginBack = Lcore.querySelector("#signup");
 
     button.addEventListener('click', () => {
         if (password.value !== cpassword.value) {

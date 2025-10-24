@@ -1,10 +1,13 @@
 <!-- Camera area: displays live video from the user's camera -->
 <div id="camera-section"> 
+  <div id="video-wrapper">
   <video id="video" width="400" height="300" autoplay></video>
+    <div id="center-indicator"></div>
+  </div>
   <div id="controls">
 
     <!-- Button to capture the center pixel from the video -->
-    <button id="getColor" class="clickable">Take Photo</button>
+    <button id="getColor" class="clickable textFill">Take Photo</button>
   </div>
 </div>
 

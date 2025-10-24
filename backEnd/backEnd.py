@@ -8,7 +8,7 @@ CORS(app)
 # Execute a SQL query and return fetched rows (empty list on error).
 def sql(query, params=()):
     try:
-        with sqlite3.connect("colourdex.db") as conn:
+        with sqlite3.connect("backEnd\colourdex.db") as conn:
             cursor = conn.cursor()
             cursor.execute(query, params)
             return cursor.fetchall()
@@ -107,6 +107,9 @@ def rate():
     data = request.get_json(silent=True)
     if not data or "hex" not in data or "score" not in data or "desc" not in data or "user" not in data:
         return bad_request("Missing fields")
+
+    if data["score"] < 1 or data["score"] > 5:
+        return bad_request("Score must be between 1 and 5")
 
     user_data = data["user"]
     if not isinstance(user_data, dict) or "name" not in user_data or "pas" not in user_data:
@@ -273,6 +276,9 @@ def background():
     data = request.get_json(silent=True)
     if not data or "user" not in data or "hex" not in data:
         return bad_request("Missing fields")
+
+    if not sql("SELECT * FROM COLOUR WHERE hex = ?", [data["hex"]]):
+        return bad_request("Colour does not exist")
 
     user_data = data["user"]
     if not isinstance(user_data, dict) or "name" not in user_data or "pas" not in user_data:
