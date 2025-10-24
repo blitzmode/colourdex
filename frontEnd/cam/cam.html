@@ -1,8 +1,14 @@
+<!-- Camera area: displays live video from the user's camera -->
 <div id="camera-section"> 
   <video id="video" width="400" height="300" autoplay></video>
   <div id="controls">
-    <button id="getColor">Take Photo</button>
+
+    <!-- Button to capture the center pixel from the video -->
+    <button id="getColor" class="clickable">Take Photo</button>
   </div>
 </div>
+
 <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+
+<!-- Container where new colours are shown -->
 <div id="container"></div>

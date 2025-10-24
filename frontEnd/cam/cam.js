@@ -1,6 +1,7 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 
+// Request access to the user's camera and stream it into the <video> element
 navigator.mediaDevices.getUserMedia({ video: true })
   .then((stream) => {
     video.srcObject = stream;
@@ -9,6 +10,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
     alert("Error accessing camera: " + err);
   });
 
+// Show a rating popup for a captured colour and return the result
 async function showRating(r, g, b, name) {
   _holder.innerHTML = `
     <div id="rating">
@@ -24,6 +26,7 @@ async function showRating(r, g, b, name) {
 
   const popup = _holder.querySelector("#rating");
 
+  // Default rating and star elements
   let rating = 1;
   const stars = Array.from(popup.querySelectorAll(".star"));
 
@@ -34,21 +37,21 @@ async function showRating(r, g, b, name) {
   }
   updateStars();
 
+  // Clicking a star updates the rating
   stars.forEach((s,i) => s.addEventListener("click", () => {
     rating = i + 1;
     updateStars();
   }));
 
-  return new Promise((resolve) => {
+  // Saves the rating
     popup.querySelector("#save").addEventListener("click", async () => {
       popup.remove();
       const desc = popup.querySelector("#desc").value
-      const result = await getData("rate", {hex: rgbToHex(r, g, b), score: rating, desc: desc, user: final});
-      resolve(result);
+      getData("rate", {hex: rgbToHex(r, g, b), score: rating, desc: desc, user: final});
     });
-  });
 }
 
+// Prompt the user to name a newly discovered colour and save it
 async function showNameCard(r, g, b, hex) {
   _holder.innerHTML = `
     <div id="nameCard">
@@ -60,6 +63,7 @@ async function showNameCard(r, g, b, hex) {
   `;
   const popup = _holder.querySelector("#nameCard");
 
+  // Resolve with the entered name when saved
   return new Promise((resolve) => {
     popup.querySelector("#save").addEventListener("click", async () => {
       const name = popup.querySelector("#name").value;
@@ -71,11 +75,13 @@ async function showNameCard(r, g, b, hex) {
   });
 }
 
+// Handler for "Get Color" button: capture center pixel from video and handle it
 document.getElementById('getColor').addEventListener('click', () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+  // get the pixel at the center of the canvas
   const midX = Math.floor(canvas.width / 2);
   const midY = Math.floor(canvas.height / 2)
 
@@ -83,7 +89,8 @@ document.getElementById('getColor').addEventListener('click', () => {
   const [r, g, b] = pixel;
   const hex = rgbToHex(r, g, b);
 
-  async function AShow() {
+  // Lookup info for this colour, prompt naming if new, then display & rate
+  async function AS() {
     const info = await getData("find", {hex: hex});
     if (info){
       if (info.name == null)
@@ -94,5 +101,5 @@ document.getElementById('getColor').addEventListener('click', () => {
       showRating(r, g, b, info.name);
     }
   }
-  AShow()
+  AS()
 });
