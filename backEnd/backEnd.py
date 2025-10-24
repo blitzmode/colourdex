@@ -8,7 +8,7 @@ CORS(app)
 # Execute a SQL query and return fetched rows (empty list on error).
 def sql(query, params=()):
     try:
-        with sqlite3.connect("backEnd\colourdex.db") as conn:
+        with sqlite3.connect("colourdex.db") as conn:
             cursor = conn.cursor()
             cursor.execute(query, params)
             return cursor.fetchall()

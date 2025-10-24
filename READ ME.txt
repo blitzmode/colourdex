@@ -7,7 +7,7 @@ Front End
 	Next the front end can be opened using directly with the VS 'live server' extension
 	 (to use right click main.html them click "open with live surver")
 
-note: when using 'live server' do NOT open front end and back end as one folder in VS!!!
+note: do NOT open front end and back end as one folder in VS!!!
 
 bad							good
 
