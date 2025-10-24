@@ -8,8 +8,7 @@ async function showUsers(term) {
     container.innerHTML = ""
     // Create profile line (user ribbon) for each user
     users["users"].forEach(user => {
-        console.log(user["background"])
-        const line = addProfileLineTrue(user["id"], user["background"], user["name"], user["friend"], container, true, user["pic"]);
+        addProfileLineTrue(user["id"], user["background"], user["name"], user["friend"], container, true, user["pic"]);
     });
 }
 
