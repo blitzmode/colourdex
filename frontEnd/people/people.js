@@ -4,7 +4,6 @@ var container = document.getElementById("container");
 // Search and display users based on search term
 async function showUsers(term) {
     container.innerHTML = "Loading.."
-    // Fetch user data from server
     const users = await getData("search", {view: uid, term: term})
     container.innerHTML = ""
     // Create profile line (user ribbon) for each user
